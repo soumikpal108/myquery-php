@@ -9,12 +9,21 @@
         <li class="nav-item">
           <a class="nav-link active" href="./">Home</a>
         </li>
+        <?php 
+        if(isset($_SESSION['user']['username'])){ ?>
+        <li class="nav-item">
+          <a class="nav-link" href="./server/requests.php?logout=true">Logout</a>
+        </li>
+        <?php } ?>
+        <?php 
+        if(!isset($_SESSION['user']['username'])){ ?>
         <li class="nav-item">
           <a class="nav-link" href="?login=true">Login</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="?signup=true">Signup</a>
         </li>
+        <?php } ?>
         <li class="nav-item">
           <a class="nav-link" href="#">Category</a>
         </li>
