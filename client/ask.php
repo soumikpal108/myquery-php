@@ -12,11 +12,7 @@
         </div>
         <div class="offset-sm-3 col-6 mb-3">
             <label for="category" class="form-label">Category</label>
-            <select id="category" name="category" class="form-control">
-                <option value="">Mobile</option>
-                <option value="">General</option>
-                <option value="">Coding</option>
-            </select>   
+            <?php include("category.php"); ?>
         </div>
         <div class="offset-sm-3 col-6">
             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
