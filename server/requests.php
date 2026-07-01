@@ -14,9 +14,10 @@ if(isset($_POST['signup'])){
     );
     
         $result = $user->execute();
+
     
         if($result){
-        $_SESSION['user'] = ["username"=>$username,"email"=>$email];
+        $_SESSION['user'] = ["username"=>$username,"email"=>$email,"user_id"=> $user->insert_id];
         // Correct redirect syntax:
         header("Location: /myquery-php");
         exit(); // Always call exit() after a redirect to stop script execution
@@ -28,6 +29,8 @@ if(isset($_POST['signup'])){
 else if(isset($_POST['login'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $username = "";
+    $user_id = 0;
 
     $query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
     $result = $conn->query($query);
@@ -38,7 +41,8 @@ else if(isset($_POST['login'])){
 
         $_SESSION['user'] = [
             "username" => $row['username'],
-            "email" => $row['email']
+            "email" => $row['email'],
+            "user_id"  => $row['id'],
         ];
 
         header("Location: /myquery-php");
@@ -48,5 +52,29 @@ else if(isset($_POST['login'])){
 else if(isset($_GET['logout'])){
     session_unset();
     header("Location: /myquery-php");
+}
+else if(isset($_POST['ask'])){
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+    $category_id = $_POST['category'];
+    $user_id = $_SESSION['user']['user_id'];
+    // print_r($_SESSION);
+    // exit();
+    $question = $conn->prepare(
+    "INSERT INTO `questions`
+    (`id`, `title`, `description`, `category_id`, `user_id`) 
+    VALUES (NULL,'$title', '$description', '$category_id', '$user_id');"
+    );
+    
+        $result = $question->execute();
+
+    
+        if($result){
+        header("Location: /myquery-php");
+        exit(); 
+        }   
+        else{
+            echo "Question is added to the website";
+        }
 }
 ?>

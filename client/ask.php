@@ -15,7 +15,7 @@
             <?php include("category.php"); ?>
         </div>
         <div class="offset-sm-3 col-6">
-            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" name="ask" class="btn btn-primary">Ask Question</button>
         </div>
     </form>
 </div>
