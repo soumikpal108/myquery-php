@@ -1,3 +1,17 @@
 a{
     color: skyblue !important;
 }
+.question-list{
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px;
+}
+.question-list h5{
+    margin: 0;
+    padding: 0;
+}
+.question-list a{
+    font-size: 17px;
+    text-decoration: none;
+    color: #1c7194 !important;
+}
