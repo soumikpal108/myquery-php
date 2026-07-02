@@ -7,7 +7,7 @@
     $result = $conn->query($query);
     foreach($result as $row){
         echo "<div class='row question-list'>
-        <h5><a href='#'>{$row['title']}</a></h5>
+        <h5><a href='?q-id={$row['id']}'>{$row['title']}</a></h5>
         </div>";
     }
     ?>

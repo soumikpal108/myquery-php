@@ -17,6 +17,10 @@
         else if(isset($_GET['ask'])){
             include('./client/ask.php');
         }
+        else if(isset($_GET['q-id'])){
+            $qid = $_GET['q-id'];
+            include('./client/question-details.php');
+        }
         else{
         include('./client/questions.php');
         }
