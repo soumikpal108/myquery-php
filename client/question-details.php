@@ -10,6 +10,7 @@
     $row=$result->fetch_assoc();
     echo "<h4 class='mb-3 question-title'>Question: {$row['title']}</h4>
     <p class='mb-3'>{$row['description']}</p>";
+    include("answers.php");
     ?>
     <form action="./server/requests.php" method="post">
         <input type="hidden" name="question_id" value="<?php echo $qid?>">
