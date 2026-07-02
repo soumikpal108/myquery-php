@@ -77,4 +77,26 @@ else if(isset($_POST['ask'])){
             echo "Question is added to the website";
         }
 }
+else if(isset($_POST['answer'])){
+    $answer = $_POST['answer'];
+    $question_id = $_POST['question_id'];
+    $user_id = $_SESSION['user']['user_id'];
+    // print_r($_SESSION);
+    // exit();
+    $query = $conn->prepare(
+    "INSERT INTO `answers`
+    (`id`, `answer`, `question_id`, `user_id`) 
+    VALUES (NULL,'$answer','$question_id', '$user_id');"
+    );
+    
+        $result = $query->execute();
+    
+        if($result){
+        header("Location: /myquery-php?q-id=$question_id");
+        exit(); 
+        }   
+        else{
+            echo "Answer is not submitted";
+        }
+}
 ?>

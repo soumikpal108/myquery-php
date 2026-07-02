@@ -11,7 +11,10 @@
     echo "<h4 class='mb-3 question-title'>Question: {$row['title']}</h4>
     <p class='mb-3'>{$row['description']}</p>";
     ?>
-    <textarea class="form-control mb-3" placeholder="Your answer..."></textarea>
+    <form action="./server/requests.php" method="post">
+        <input type="hidden" name="question_id" value="<?php echo $qid?>">
+    <textarea name="answer" class="form-control mb-3" placeholder="Your answer..."></textarea>
     <button class="btn btn-primary">Write your answer</button>
+    </form>    
     </div>
 </div>
